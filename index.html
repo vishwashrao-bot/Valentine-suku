@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💕</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', 'Poppins', cursive;
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf3);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.container {
+  background: white;
+  padding: 25px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  text-align: center;
+  max-width: 360px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  color: #ff4d88;
+  font-size: 20px;
+}
+
+.photo {
+  width: 100%;
+  border-radius: 18px;
+  margin: 15px 0;
+}
+
+button {
+  background: #ff85b3;
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 8px;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.panda-party {
+  display: none;
+  margin-top: 15px;
+}
+
+.panda {
+  font-size: 48px;
+  animation: dance 0.6s infinite alternate;
+}
+
+@keyframes dance {
+  from { transform: rotate(-10deg) translateY(0); }
+  to { transform: rotate(10deg) translateY(-10px); }
+}
+
+.confetti {
+  position: fixed;
+  top: -10px;
+  font-size: 18px;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+.firework {
+  position: fixed;
+  font-size: 30px;
+  animation: pop 1s ease-out forwards;
+}
+
+@keyframes pop {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(2); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <h1>
+    Hello Sukanya Mishra 💕<br><br>
+    Will you be your<br>
+    <strong>Vishu Baby’s Valentine?</strong 💖
+  </h1>
+
+  <img src="couple.jpg" class="photo" alt="Us 🥰">
+
+  <button onclick="normalYes()">Yes 💗</button>
+  <button onclick="pandaTime()">Yes Vishu Baby 🐼💞</button>
+
+  <div class="panda-party" id="pandaParty">
+    <h2>YAYYYY 💖🎉</h2>
+    <div>
+      <span class="panda">🐼</span>
+      <span class="panda">🐼</span>
+      <span class="panda">🐼</span>
+    </div>
+    <p>Valentine mode unlocked 😌🩷</p>
+  </div>
+</div>
+
+<script>
+function pandaTime() {
+  document.getElementById("pandaParty").style.display = "block";
+  document.getElementById("bgMusic").play();
+
+  for (let i = 0; i < 40; i++) {
+    createConfetti();
+  }
+
+  for (let i = 0; i < 8; i++) {
+    createFirework();
+  }
+}
+
+function normalYes() {
+  alert("Cute choice 😍 but Vishu Baby is waiting for the other button 😏🐼");
+}
+
+function createConfetti() {
+  const c = document.createElement("div");
+  c.className = "confetti";
+  c.innerHTML = ["💖","🎉","✨","💗"][Math.floor(Math.random()*4)];
+  c.style.left = Math.random()*100 + "vw";
+  c.style.animationDuration = (2 + Math.random()*2) + "s";
+  document.body.appendChild(c);
+  setTimeout(() => c.remove(), 4000);
+}
+
+function createFirework() {
+  const f = document.createElement("div");
+  f.className = "firework";
+  f.innerHTML = "🎆";
+  f.style.left = Math.random()*100 + "vw";
+  f.style.top = Math.random()*50 + "vh";
+  document.body.appendChild(f);
+  setTimeout(() => f.remove(), 1000);
+}
+</script>
+
+</body>
+</html>
